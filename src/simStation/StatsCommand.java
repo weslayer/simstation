@@ -9,7 +9,7 @@ public class StatsCommand extends Command {
     }
 
     public void execute() {
-        Simstation simstation = (Simstation) model;
-        simstation.stats();
+        World world = (World) model;
+        Utilities.inform(world.getStatus());
     }
 }
