@@ -14,7 +14,6 @@
 
 package mvc;
 
-import java.awt.event.*;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.Random;

@@ -64,8 +64,7 @@ public class WorldPanel extends AppPanel {
         World w = (World) m;
         Iterator<Agent> it = w.iterator();
         while (it.hasNext()) {
-            Thread t = new Thread(it.next());
-            t.start();
+            it.next().start();
         }
     }
 
