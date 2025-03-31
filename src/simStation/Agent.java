@@ -1,46 +1,86 @@
 package simStation;
 
-public class Agent extends Thread {
-    private int xc;
-    private int yc;
-    private boolean paused;
-    private boolean stopped;
-    private String agentName;
-    private Thread myThread;
+import java.io.Serializable;
+import java.util.Random;
+
+public class Agent implements Serializable {
+    protected String name;
+    protected int xc;
+    protected int yc;
+    protected boolean suspended;
+    protected boolean stopped;
+    protected World world;
+    transient protected Thread myThread;
+    
+    private static final Random RANDOM = new Random();
 
     public Agent(String name) {
-        this.xc = 0;
-        this.yc = 0;
-        this.paused = false;
+        this.name = name;
+        this.xc = RANDOM.nextInt(World.SIZE);
+        this.yc = RANDOM.nextInt(World.SIZE);
+        this.suspended = false;
         this.stopped = false;
-        this.agentName = name;
-        this.myThread = null;
     }
-
+    
+    public void setWorld(World world) {
+        this.world = world;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public int getX() { 
+        return xc; 
+    }
+    
+    public int getY() { 
+        return yc; 
+    }
+    
+    public void start() {
+        myThread = new Thread(this::run);
+        myThread.start();
+    }
+    
     public void run() {
-        while (!this.paused) {
-            this.update();
-            sleep(20);
+        onStart();
+        while (!stopped) {
+            try {
+                if (!suspended) {
+                    update();
+                    Thread.sleep(20); // smooth animation
+                } else {
+                    Thread.sleep(100); // reduce CPU usage while suspended
+                }
+            } catch (InterruptedException e) {
+                onInterrupted();
+            }
         }
+        onExit();
     }
-
-    public void pause() {
-        this.paused = true;
-    }
-
-    @Override
-    public void resume() {
-        this.paused = false;
-    }
-
+    
+    // Empty methods that can be overridden in subclasses
+    protected void onStart() { }
+    protected void onInterrupted() { }
+    protected void onExit() { }
+    
     public void update() {
+        // To be implemented by subclasses
     }
-
-    public void int getXPos() {
-        return this.xc;
+    
+    public void suspend() {
+        suspended = true;
     }
-
-    public void int getXPos() {
-        return this.yc;
+    
+    public void resume() {
+        suspended = false;
+    }
+    
+    public void stop() {
+        stopped = true;
+        if (myThread != null) {
+            myThread.interrupt();
+        }
     }
 }

@@ -4,7 +4,7 @@ import mvc.*;
 
 public class StatsCommand extends Command {
 
-    public StartCommand(Model model) {
+    public StatsCommand(Model model) {
         super(model);
     }
 

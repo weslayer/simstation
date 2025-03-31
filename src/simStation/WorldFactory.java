@@ -2,13 +2,13 @@ package simStation;
 
 import mvc.*;
 
-public class SimstationFactory implements AppFactory {
+public class WorldFactory implements AppFactory {
     public Model makeModel() {
-        return new Simstation();
+        return new World();
     }
 
     public View makeView(Model m) {
-        return new SimstationView((Simstation) m);
+        return new WorldView((World) m);
     }
 
     public String[] getEditCommands() {
@@ -17,7 +17,7 @@ public class SimstationFactory implements AppFactory {
 
     public Command makeEditCommand(Model model, String type, Object source) {
         if (type == "Start")
-            return new ChangeCommand(model);
+            return new StartCommand(model);
         if (type == "Pause")
             return new PauseCommand(model);
         if (type == "Resume")
@@ -26,6 +26,7 @@ public class SimstationFactory implements AppFactory {
             return new StopCommand(model);
         if (type == "Stats")
             return new StatsCommand(model);
+        return null;
     }
 
     public String getTitle() {

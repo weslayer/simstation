@@ -4,12 +4,12 @@ import mvc.*;
 
 public class ResumeCommand extends Command {
 
-    public StartCommand(Model model) {
+    public ResumeCommand(Model model) {
         super(model);
     }
 
     public void execute() {
-        Simstation simstation = (Simstation) model;
-        simstation.resume();
+        World world = (World) model;
+        world.resumeAgents();
     }
 }

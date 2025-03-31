@@ -4,12 +4,12 @@ import mvc.*;
 
 public class StopCommand extends Command {
 
-    public StartCommand(Model model) {
+    public StopCommand(Model model) {
         super(model);
     }
 
     public void execute() {
-        Simstation simstation = (Simstation) model;
-        simstation.stop();
+        World world = (World) model;
+        world.stopAgents();
     }
 }

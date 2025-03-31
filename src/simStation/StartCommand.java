@@ -9,7 +9,7 @@ public class StartCommand extends Command {
     }
 
     public void execute() {
-        Simstation simstation = (Simstation) model;
-        simstation.start();
+        World world = (World) model;
+        world.startAgents();
     }
 }
