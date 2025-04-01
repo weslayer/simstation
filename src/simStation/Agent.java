@@ -4,45 +4,39 @@ import java.io.Serializable;
 import java.util.Random;
 
 public class Agent implements Serializable {
-    protected String name;
     protected int xc;
     protected int yc;
     protected boolean suspended;
     protected boolean stopped;
     protected World world;
     transient protected Thread myThread;
-    
+
     private static final Random RANDOM = new Random();
 
-    public Agent(String name) {
-        this.name = name;
+    public Agent() {
         this.xc = RANDOM.nextInt(World.SIZE);
         this.yc = RANDOM.nextInt(World.SIZE);
         this.suspended = false;
         this.stopped = false;
     }
-    
+
     public void setWorld(World world) {
         this.world = world;
     }
-    
-    public String getName() {
-        return name;
+
+    public int getX() {
+        return xc;
     }
-    
-    public int getX() { 
-        return xc; 
+
+    public int getY() {
+        return yc;
     }
-    
-    public int getY() { 
-        return yc; 
-    }
-    
+
     public void start() {
         myThread = new Thread(this::run);
         myThread.start();
     }
-    
+
     public void run() {
         onStart();
         while (!stopped) {
@@ -59,24 +53,29 @@ public class Agent implements Serializable {
         }
         onExit();
     }
-    
+
     // Empty methods that can be overridden in subclasses
-    protected void onStart() { }
-    protected void onInterrupted() { }
-    protected void onExit() { }
-    
+    protected void onStart() {
+    }
+
+    protected void onInterrupted() {
+    }
+
+    protected void onExit() {
+    }
+
     public void update() {
         // To be implemented by subclasses
     }
-    
+
     public void suspend() {
         suspended = true;
     }
-    
+
     public void resume() {
         suspended = false;
     }
-    
+
     public void stop() {
         stopped = true;
         if (myThread != null) {

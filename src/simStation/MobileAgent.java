@@ -1,10 +1,10 @@
 package simStation;
 
 public class MobileAgent extends Agent {
-    private Heading heading;
+    public Heading heading;
 
-    public MobileAgent(String name) {
-        super(name);
+    public MobileAgent() {
+        super();
         this.heading = Heading.random();
     }
 
@@ -28,13 +28,17 @@ public class MobileAgent extends Agent {
                     xc--;
                     break;
             }
-            
+
             // Wrap around world borders
-            if (xc < 0) xc = World.SIZE - 1;
-            if (xc >= World.SIZE) xc = 0;
-            if (yc < 0) yc = World.SIZE - 1;
-            if (yc >= World.SIZE) yc = 0;
-            
+            if (xc < 0)
+                xc = World.SIZE - 1;
+            if (xc >= World.SIZE)
+                xc = 0;
+            if (yc < 0)
+                yc = World.SIZE - 1;
+            if (yc >= World.SIZE)
+                yc = 0;
+
             // Notify world of change after each step
             if (world != null) {
                 world.changed();
@@ -45,7 +49,7 @@ public class MobileAgent extends Agent {
     public void turn(Heading newHeading) {
         this.heading = newHeading;
     }
-    
+
     public void randomTurn() {
         this.heading = Heading.random();
     }
