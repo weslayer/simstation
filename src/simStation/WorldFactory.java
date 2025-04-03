@@ -44,6 +44,6 @@ public class WorldFactory implements AppFactory {
     }
 
     public String about() {
-        return "Simstation version 1.0. Copyright 2025 by ___, ___, and Rustico Dela Cruz III.";
+        return "Simstation version 1.0. Copyright 2025.";
     }
 }

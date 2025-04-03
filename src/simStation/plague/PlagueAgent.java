@@ -1,19 +1,12 @@
-package simstation.plague;
+package simStation.plague;
 
 import mvc.*;
-import simstation.*;
+import simStation.*;
 
 class PlagueAgent extends MobileAgent {
-    private boolean INFECTED;
+    public boolean INFECTED;
 
     public PlagueAgent() {
         super();
     }
-
-    public void update() {
-        heading = Heading.random();
-        int steps = Utilities.rng.nextInt(20) + 1;
-        move(steps);
-    }
-
 }
