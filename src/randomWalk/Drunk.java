@@ -1,4 +1,4 @@
-package randomWalk;
+package simstation.plague;
 
 import mvc.*;
 import simStation.*;

@@ -7,11 +7,11 @@ import java.util.Random;
 
 public class World extends Model {
     public static final int SIZE = 500;
-    private int clock;
+    public int clock;
     private int alive;
-    private ArrayList<Agent> agents;
+    public ArrayList<Agent> agents;
     private ObserverAgent observer;
-    private static final Random RANDOM = new Random();
+    public static final Random RANDOM = new Random();
 
     public World() {
         this.clock = 0;
@@ -86,29 +86,30 @@ public class World extends Model {
     }
 
     public Agent getNeighbor(Agent caller, int radius) {
-        if (agents.size() <= 1) return null;
-        
+        if (agents.size() <= 1)
+            return null;
+
         // Start at a random position
         int start = RANDOM.nextInt(agents.size());
         int current = start;
-        
+
         do {
             Agent candidate = agents.get(current);
             if (candidate != caller && !(candidate instanceof ObserverAgent)) {
                 // Calculate distance between agents
                 int dx = candidate.getX() - caller.getX();
                 int dy = candidate.getY() - caller.getY();
-                double distance = Math.sqrt(dx*dx + dy*dy);
-                
+                double distance = Math.sqrt(dx * dx + dy * dy);
+
                 if (distance <= radius) {
                     return candidate;
                 }
             }
-            
+
             // Move to next agent (wrap around)
             current = (current + 1) % agents.size();
         } while (current != start);
-        
+
         // No suitable neighbor found
         return null;
     }
