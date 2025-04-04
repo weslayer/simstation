@@ -5,7 +5,7 @@ import simStation.*;
 
 public class PlagueFactory extends WorldFactory {
     public Model makeModel() {
-        return new PlagueSimulation(20, 50, 100, 400);
+        return new PlagueSimulation(20, 50, 100, 400, true);
     }
 
     public View makeView(Model m) {
