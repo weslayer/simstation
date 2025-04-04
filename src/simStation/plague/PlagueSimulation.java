@@ -6,19 +6,21 @@ import simStation.*;
 public class PlagueSimulation extends World {
     private static int VIRULENCE;
     private static int RESISTANCE;
-    public int INITIAL_PERCENT_INFECTED;
-    public int INFECTION_PROBABILITY;
-    public int POPULATION_SIZE;
-    public int AMOUNT_INFECTED;
+    public double INITIAL_PERCENT_INFECTED;
+    public double INFECTION_PROBABILITY;
+    public double POPULATION_SIZE;
+    public double AMOUNT_INFECTED;
     public int FATALITY_OR_RECOVERY_RATE;
+    public boolean FATAL;
 
-    public PlagueSimulation(int init_inf, int inf_prob, int init_pop, int rec_time) {
+    public PlagueSimulation(int init_inf, int inf_prob, int init_pop, int rec_time, boolean fatal) {
         super();
         this.INITIAL_PERCENT_INFECTED = init_inf;
         this.INFECTION_PROBABILITY = inf_prob;
         this.POPULATION_SIZE = init_pop;
         this.FATALITY_OR_RECOVERY_RATE = rec_time;
         this.AMOUNT_INFECTED = 0;
+        this.FATAL = fatal;
     }
 
     @Override
