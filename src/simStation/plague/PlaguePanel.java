@@ -16,12 +16,7 @@ public class PlaguePanel extends WorldPanel {
         threadPanel.setLayout(new GridLayout(5, 5));
         threadPanel.setOpaque(false);
 
-        p = new JPanel();
-        p.setOpaque(false);
         JLabel infected = new JLabel("Initial % Infected");
-        p.add(infected);
-        threadPanel.add(p, 2);
-
         JLabel probability = new JLabel("Infection Probability");
         JLabel population = new JLabel("Initial Population Size");
         JLabel recovery = new JLabel("Fatality/Recovery Time");
@@ -34,14 +29,15 @@ public class PlaguePanel extends WorldPanel {
 
         fatalButton.addActionListener(this);
 
-        threadPanel.add(infectedSlider);
-        threadPanel.add(probability);
-        threadPanel.add(probabilitySlider);
-        threadPanel.add(population);
-        threadPanel.add(populationSlider);
-        threadPanel.add(recovery);
-        threadPanel.add(recoverySlider);
-        threadPanel.add(fatalButton);
+        threadPanel.add(infected, 1);
+        threadPanel.add(infectedSlider, 1);
+        threadPanel.add(probability, 2);
+        threadPanel.add(probabilitySlider, 2);
+        threadPanel.add(population, 3);
+        threadPanel.add(populationSlider, 3);
+        threadPanel.add(recovery, 4);
+        threadPanel.add(recoverySlider, 4);
+        threadPanel.add(fatalButton, 5);
 
         controlPanel.setLayout(new BorderLayout());
 
@@ -49,7 +45,7 @@ public class PlaguePanel extends WorldPanel {
         p.setOpaque(false);
         p.add(threadPanel);
 
-        controlPanel.add(p, BorderLayout.NORTH);
+        controlPanel.add(p, BorderLayout.SOUTH);
     }
 
     public void setModel(Model m) {
