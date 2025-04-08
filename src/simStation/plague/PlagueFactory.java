@@ -17,6 +17,7 @@ public class PlagueFactory extends WorldFactory {
     }
 
     public Command makeEditCommand(Model model, String type, Object source) {
+        double num = 0;
         switch (type) {
             case "Start":
                 return new StartCommand(model);
@@ -28,6 +29,10 @@ public class PlagueFactory extends WorldFactory {
                 return new StopCommand(model);
             case "Stats":
                 return new StatsCommand(model);
+            case "Fatal":
+                return new FatalCommand(model);
+            case "Not Fatal":
+                return new NotFatalCommand(model);
             default:
                 return null;
         }

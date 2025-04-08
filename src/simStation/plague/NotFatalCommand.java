@@ -1,4 +1,4 @@
-package simStation.plague
+package simStation.plague;
 
 import mvc.*;
 
@@ -10,6 +10,6 @@ public class NotFatalCommand extends Command {
 
     public void execute() {
         PlagueSimulation plagueSimulation = (PlagueSimulation) model;
-        plagueSimulation.FATAL = flase;
+        plagueSimulation.FATAL = false;
     }
 }
