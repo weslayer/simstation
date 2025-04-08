@@ -6,7 +6,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         // Test, should work:
         // AppPanel panel = new WorldPanel(new RandomWalkFactory());
-        AppPanel panel = new WorldPanel(new PlagueFactory());
+        AppPanel panel = new PlaguePanel(new PlagueFactory());
         panel.display();
     }
 }

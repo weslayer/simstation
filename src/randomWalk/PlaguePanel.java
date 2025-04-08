@@ -13,7 +13,7 @@ public class PlaguePanel extends WorldPanel {
     public PlaguePanel(PlagueFactory factory) {
         super(factory);
 
-        threadPanel.setLayout(new GridLayout(5, 5));
+        threadPanel.setLayout(new GridLayout(5, 2));
         threadPanel.setOpaque(false);
 
         JLabel infected = new JLabel("Initial % Infected");
@@ -22,22 +22,41 @@ public class PlaguePanel extends WorldPanel {
         JLabel recovery = new JLabel("Fatality/Recovery Time");
 
         JSlider infectedSlider = new JSlider(0, 100);
+        infectedSlider.setPaintTicks(true);
+        infectedSlider.setPaintLabels(true);
+        infectedSlider.setMajorTickSpacing(20);
+        infectedSlider.setMinorTickSpacing(5);
+        infectedSlider.setChangeListener(this);
         JSlider probabilitySlider = new JSlider(0, 100);
+        probabilitySlider.setPaintTicks(true);
+        probabilitySlider.setPaintLabels(true);
+        probabilitySlider.setMajorTickSpacing(20);
+        probabilitySlider.setMinorTickSpacing(5);
+        probabilitySlider.setChangeListener(this);
         JSlider populationSlider = new JSlider(0, 200);
+        populationSlider.setPaintTicks(true);
+        populationSlider.setPaintLabels(true);
+        populationSlider.setMajorTickSpacing(40);
+        populationSlider.setMinorTickSpacing(10);
+        populationSlider.setChangeListener(this);
         JSlider recoverySlider = new JSlider(0, 500);
-        JButton fatalButton = new JButton("Not Fatal");
-
+        recoverySlider.setPaintTicks(true);
+        recoverySlider.setPaintLabels(true);
+        recoverySlider.setMajorTickSpacing(100);
+        recoverySlider.setMinorTickSpacing(25);
+        recoverySlider.setChangeListener(this);
+        JButton fatalButton = new JButton("Fatal");
         fatalButton.addActionListener(this);
 
-        threadPanel.add(infected, 1);
-        threadPanel.add(infectedSlider, 1);
-        threadPanel.add(probability, 2);
-        threadPanel.add(probabilitySlider, 2);
-        threadPanel.add(population, 3);
-        threadPanel.add(populationSlider, 3);
-        threadPanel.add(recovery, 4);
-        threadPanel.add(recoverySlider, 4);
-        threadPanel.add(fatalButton, 5);
+        threadPanel.add(infected);
+        threadPanel.add(infectedSlider);
+        threadPanel.add(probability);
+        threadPanel.add(probabilitySlider);
+        threadPanel.add(population);
+        threadPanel.add(populationSlider);
+        threadPanel.add(recovery);
+        threadPanel.add(recoverySlider);
+        threadPanel.add(fatalButton);
 
         controlPanel.setLayout(new BorderLayout());
 
@@ -45,12 +64,21 @@ public class PlaguePanel extends WorldPanel {
         p.setOpaque(false);
         p.add(threadPanel);
 
-        controlPanel.add(p, BorderLayout.SOUTH);
+        controlPanel.add(p, BorderLayout.CENTER);
+    }
+
+    public void stateChanged(ChangeEvent e) {
+        JSlider source = (JSlider) e.getSource();
+        if (source == infectedSlider) {
+        } else if (source == probabilitySlider) {
+        } else if (source == populationSlider) {
+        } else if (source == recoverySlider) {
+        }
     }
 
     public void setModel(Model m) {
         super.setModel(m);
-        World w = (World) m;
+        PlagueSimulation w = (PlagueSimulation) m;
         Iterator<Agent> it = w.iterator();
         while (it.hasNext()) {
             it.next().start();

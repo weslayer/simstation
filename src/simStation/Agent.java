@@ -82,4 +82,8 @@ public class Agent implements Serializable {
             myThread.interrupt();
         }
     }
+
+    public boolean isStopped() {
+        return stopped;
+    }
 }
