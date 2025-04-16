@@ -6,9 +6,7 @@ import simStation.ObserverAgent;
 import simStation.World;
 import simStation.WorldView;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
 public class MeadowView extends WorldView {

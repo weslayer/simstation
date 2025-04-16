@@ -30,21 +30,20 @@ public class Meadow extends World {
 
     @Override
     public void startAgents() {
-        if (!agents.isEmpty()) {
-            Iterator<Agent> iterator = agents.iterator();
-            while (iterator.hasNext()) {
-                Agent a = iterator.next();
-                if (a instanceof Cow) {
-                    iterator.remove();
-                }
-                else if (a instanceof Patch) {
-                    ((Patch) a).regen();
-                }
+        Iterator<Agent> iterator = iterator();
+        while (iterator.hasNext()) {
+            Agent a = iterator.next();
+            if (a instanceof Cow) {
+                iterator.remove();
             }
-       }
+            else if (a instanceof Patch) {
+                ((Patch) a).regen();
+            }
+        }
         populate();
-        for (Agent agent : agents) {
-            agent.start();
+        iterator = iterator();
+        while (iterator.hasNext()) {
+            iterator.next().start();
         }
         changed();
     }
@@ -81,7 +80,12 @@ public class Meadow extends World {
     }
 
     public ArrayList<Agent> getAgents() {
-        return this.agents;
+        ArrayList<Agent> result = new ArrayList<>();
+        Iterator<Agent> iterator = iterator();
+        while (iterator.hasNext()) {
+            result.add(iterator.next());
+        }
+        return result;
     }
 
     public Patch[][] getMeadow() {

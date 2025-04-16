@@ -1,12 +1,10 @@
-package simstation.plague;
+package randomWalk;
 
 import mvc.*;
-import simstation.*;
+import simStation.*;
 
-class PlagueAgent extends MobileAgent {
-    private boolean INFECTED;
-
-    public PlagueAgent() {
+public class Drunk extends MobileAgent {
+    public Drunk() {
         super();
     }
 
@@ -15,5 +13,4 @@ class PlagueAgent extends MobileAgent {
         int steps = Utilities.rng.nextInt(20) + 1;
         move(steps);
     }
-
 }

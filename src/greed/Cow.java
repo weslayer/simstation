@@ -2,7 +2,6 @@ package greed;
 
 import simStation.Agent;
 import simStation.MobileAgent;
-import mvc.*;
 import simStation.*;
 
 import java.awt.*;
