@@ -35,15 +35,15 @@ public class Prisoner extends Agent {
         Agent neighbor = world.getNeighbor(this, 10);
         if (neighbor instanceof Prisoner) {
             Prisoner other = (Prisoner)neighbor;
-            // Get decisions from both prisoners
+            // get both decisions
             boolean myMove = strategy.cooperate(this, other);
             boolean theirMove = other.getStrategy().cooperate(other, this);
             
-            // Update last moves
+            // update last moves
             this.lastMove = myMove;
             other.lastMove = theirMove;
             
-            // Update fitness scores based on payoff matrix
+            // update fitness scores based on payoff matrix
             if (myMove && theirMove) {
                 this.fitness += COOPERATE_COOPERATE_REWARD;
                 other.fitness += COOPERATE_COOPERATE_REWARD;
@@ -59,7 +59,7 @@ public class Prisoner extends Agent {
             }
         }
         
-        // Random movement
+        // random movement
         int randomHeading = (int)(Math.random() * 4);
         switch (randomHeading) {
             case 0: yc = Math.max(0, yc - 1); break; // North
