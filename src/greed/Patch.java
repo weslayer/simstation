@@ -86,7 +86,4 @@ public class Patch extends Agent {
         changeColor();
     }
 
-
-
-
 }
