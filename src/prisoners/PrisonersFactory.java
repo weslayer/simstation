@@ -4,7 +4,7 @@ import simStation.*;
 import mvc.*;
 import java.util.Iterator;
 
-public class PrisonersFactory implements AppFactory {
+public class PrisonersFactory extends WorldFactory {
     @Override
     public Model makeModel() {
         return new PrisonersWorld();
@@ -22,17 +22,20 @@ public class PrisonersFactory implements AppFactory {
 
     @Override
     public Command makeEditCommand(Model model, String type, Object source) {
-        if (type == "Start")
-            return new StartCommand(model);
-        if (type == "Pause")
-            return new PauseCommand(model);
-        if (type == "Resume")
-            return new ResumeCommand(model);
-        if (type == "Stop")
-            return new StopCommand(model);
-        if (type == "Stats")
-            return new StatsCommand(model);
-        return null;
+        switch (type) {
+            case "Start":
+                return new StartCommand(model);
+            case "Pause":
+                return new PauseCommand(model);
+            case "Resume":
+                return new ResumeCommand(model);
+            case "Stop":
+                return new StopCommand(model);
+            case "Stats":
+                return new StatsCommand(model);
+            default:
+                return null;
+        }
     }
 
     @Override
@@ -43,11 +46,11 @@ public class PrisonersFactory implements AppFactory {
     @Override
     public String[] getHelp() {
         return new String[] {
-            "Start - Begin the simulation",
-            "Pause - Pause the simulation",
-            "Resume - Resume a paused simulation",
-            "Stop - End the simulation",
-            "Stats - View strategy statistics"
+            "Press start to begin simulation.",
+            "Press pause to pause the simulation.",
+            "Press resume to resume a paused simulation.",
+            "Press stop to end a simulation.",
+            "Press stats to see average fitness for each strategy."
         };
     }
 
