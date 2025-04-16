@@ -1,10 +1,11 @@
 package prisoners;
 
-import mvc.*;
+import mvc.AppPanel;
+import simStation.WorldFactory;
 
 public class PrisonersDilemma {
     public static void main(String[] args) {
-        AppFactory factory = new PrisonersFactory();
+        WorldFactory factory = new PrisonersFactory();
         AppPanel panel = new PrisonersPanel(factory);
         panel.display();
     }
