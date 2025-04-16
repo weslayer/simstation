@@ -45,7 +45,7 @@ public class MeadowFactory extends WorldFactory {
 
 
     public String about() {
-        return "Greedy Pastures version 1.0. Copyright 2025 by Nicholas pang, ___, and Rustico Dela Cruz III.";
+        return "Greedy Pastures version 1.0. Copyright 2025 by Nicholas Pang, Wesley Wong, and Rustico Dela Cruz III.";
     }
 
 }

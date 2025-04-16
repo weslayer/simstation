@@ -71,9 +71,6 @@ public class MeadowPanel extends WorldPanel implements ChangeListener {
         p.setOpaque(false);
         p.add(bigPanel);
         controlPanel.add(p);
-
-
-
     }
 
     public static void main(String[] args) {
@@ -102,10 +99,8 @@ public class MeadowPanel extends WorldPanel implements ChangeListener {
                MoveSlider command = (MoveSlider) this.factory.makeEditCommand(this.model, "Move", this);
                command.execute(slider.getValue());
            }
-        }catch(
-
-                Exception h)
-        {
+        } 
+        catch(Exception h) {
             handleException(h);
         }
     }
