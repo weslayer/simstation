@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package simstation.plague;
+=======
+package randomWalk;
+>>>>>>> dfd7a77 (put packages outside of simstation)
 
 import mvc.*;
 import simStation.*;

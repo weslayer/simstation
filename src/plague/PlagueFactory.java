@@ -1,4 +1,4 @@
-package simStation.plague;
+package plague;
 
 import mvc.*;
 import simStation.*;
@@ -17,7 +17,6 @@ public class PlagueFactory extends WorldFactory {
     }
 
     public Command makeEditCommand(Model model, String type, Object source) {
-        double num = 0;
         switch (type) {
             case "Start":
                 return new StartCommand(model);

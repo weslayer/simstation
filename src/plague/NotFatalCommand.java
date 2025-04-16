@@ -1,15 +1,15 @@
-package simStation.plague;
+package plague;
 
 import mvc.*;
 
-public class FatalCommand extends Command {
+public class NotFatalCommand extends Command {
 
-    public FatalCommand(Model model) {
+    public NotFatalCommand(Model model) {
         super(model);
     }
 
     public void execute() {
         PlagueSimulation plagueSimulation = (PlagueSimulation) model;
-        plagueSimulation.FATAL = true;
+        plagueSimulation.FATAL = false;
     }
 }

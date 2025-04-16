@@ -1,4 +1,4 @@
-package simStation.plague;
+package plague;
 
 import mvc.*;
 import simStation.*;
