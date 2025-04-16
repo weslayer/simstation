@@ -4,8 +4,8 @@ import mvc.*;
 import simStation.*;
 
 public class PlagueSimulation extends World {
-    private static int VIRULENCE;
-    private static int RESISTANCE;
+    // private static int VIRULENCE;
+    // private static int RESISTANCE;
     public double INITIAL_PERCENT_INFECTED;
     public double INFECTION_PROBABILITY;
     public double POPULATION_SIZE;
