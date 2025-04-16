@@ -1,8 +1,10 @@
 package prisoners;
 
-import simStation.*;
+import mvc.Utilities;
+import simStation.Agent;
+import simStation.MobileAgent;
 
-public class Prisoner extends Agent {
+public class Prisoner extends MobileAgent {
     private Strategy strategy;
     private double fitness;
     private boolean lastMove; // true = cooperate, false = cheat
@@ -59,13 +61,8 @@ public class Prisoner extends Agent {
             }
         }
         
-        // random movement
-        int randomHeading = (int)(Math.random() * 4);
-        switch (randomHeading) {
-            case 0: yc = Math.max(0, yc - 1); break; // North
-            case 1: xc = Math.min(World.SIZE - 1, xc + 1); break; // East
-            case 2: yc = Math.min(World.SIZE - 1, yc + 1); break; // South
-            case 3: xc = Math.max(0, xc - 1); break; // West
-        }
+        // Use MobileAgent's movement functionality
+        randomTurn();
+        move(Utilities.rng.nextInt(20) + 1);
     }
 } 
