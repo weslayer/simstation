@@ -1,16 +1,8 @@
-<<<<<<< HEAD:src/simStation/plague/PlagueView.java
-package simStation.plague;
-=======
 package plague;
->>>>>>> dfd7a77 (put packages outside of simstation):src/plague/PlagueView.java
 
 import mvc.*;
 import java.awt.*;
 import simStation.*;
-<<<<<<< HEAD:src/simStation/plague/PlagueView.java
-import java.util.Iterator;
-=======
->>>>>>> dfd7a77 (put packages outside of simstation):src/plague/PlagueView.java
 
 public class PlagueView extends WorldView {
     private static final int AGENT_SIZE = 10;
